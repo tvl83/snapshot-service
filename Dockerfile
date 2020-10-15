@@ -25,7 +25,7 @@ RUN apt update && apt install --no-install-recommends -y wget gnupg2 apt-transpo
 ## EOSswededn Package repostiory setup 
 # Add GPG key
 RUN curl -fsSL https://apt.eossweden.org/key | apt-key add -
-RUN apt-add-repository -y 'deb [arch=amd64] https://apt.eossweden.org/wax bionic stable'    
+#RUN apt-add-repository -y 'deb [arch=amd64] https://apt.eossweden.org/wax bionic stable'    
 RUN apt-add-repository -y 'deb [arch=amd64] https://apt.waxsweden.org/wax bionic testing' 
 
 
