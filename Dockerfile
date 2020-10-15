@@ -20,11 +20,11 @@ ENV PACKAGES="\
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 
 # Install required packages to add APT certifcate and APT REPOs
-RUN apt update && apt install --no-install-recommends -y wget gnupg2 ca-certificates software-properties-common
+RUN apt update && apt install --no-install-recommends -y wget gnupg2 apt-transport-https ca-certificates curl software-properties-common
 
 ## EOSswededn Package repostiory setup 
 # Add GPG key
-RUN wget --no-check-certificate -O- https://apt.eossweden.org/key 2> /dev/null | apt-key add -
+RUN curl -fsSL https://apt.eossweden.org/key | apt-key add -
 RUN apt-add-repository -y 'deb [arch=amd64] https://apt.eossweden.org/wax bionic stable'    
 RUN apt-add-repository -y 'deb [arch=amd64] https://apt.waxsweden.org/wax bionic testing' 
 
