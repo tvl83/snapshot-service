@@ -34,7 +34,7 @@ RUN chmod 755 eosio_2.0.7-1-ubuntu-18.04_amd64.deb
 # Pull in build argument
 #ARG WAX_BINARY
 # Install Packages including WAX_BINARY
-RUN apt update && apt install --no-install-recommends -y $PACKAGES eosio_2.0.7-1-ubuntu-18.04_amd64.deb && \
+RUN apt update && apt install --no-install-recommends -y $PACKAGES ./eosio_2.0.7-1-ubuntu-18.04_amd64.deb && \
     rm -rf /var/lib/apt/lists/* && \
     apt clean
 
