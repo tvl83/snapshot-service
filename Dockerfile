@@ -24,15 +24,17 @@ RUN apt update && apt install --no-install-recommends -y wget gnupg2 apt-transpo
 
 ## EOSswededn Package repostiory setup 
 # Add GPG key
-RUN curl -fsSL https://apt.eossweden.org/key | apt-key add -
+#RUN curl -fsSL https://apt.eossweden.org/key | apt-key add -
 #RUN apt-add-repository -y 'deb [arch=amd64] https://apt.eossweden.org/wax bionic stable'    
-RUN apt-add-repository -y 'deb [arch=amd64] https://apt.waxsweden.org/wax bionic testing' 
+#RUN apt-add-repository -y 'deb [arch=amd64] https://apt.waxsweden.org/wax bionic testing' 
 
+RUN wget https://github.com/EOSIO/eos/releases/download/v2.0.7/eosio_2.0.7-1-ubuntu-18.04_amd64.deb
+RUN chmod 755 eosio_2.0.7-1-ubuntu-18.04_amd64.deb
 
 # Pull in build argument
-ARG WAX_BINARY
+#ARG WAX_BINARY
 # Install Packages including WAX_BINARY
-RUN apt update && apt install --no-install-recommends -y $PACKAGES $WAX_BINARY && \
+RUN apt update && apt install --no-install-recommends -y $PACKAGES eosio_2.0.7-1-ubuntu-18.04_amd64.deb && \
     rm -rf /var/lib/apt/lists/* && \
     apt clean
 
